@@ -18,6 +18,8 @@ ui <- fluidPage(
   leafletOutput("map", width = "100%", height = "800px")
 )
 
+european_places<-read.table("european_places.txt", header =TRUE)
+names(european_places)<-c("ID","Place","Latitude","Longitude","TMean","Tpr","count_animals","is_nationalPark")
 server <- function(input, output) {
   output$map <- renderLeaflet({
     leaflet(european_places) %>% 
